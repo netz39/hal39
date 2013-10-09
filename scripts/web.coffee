@@ -61,5 +61,7 @@ module.exports = (robot) ->
 
     if url.match /https?:\/\/(mobile\.)?twitter\.com/i
       console.log "Twitter link; ignoring"
+    else if url.match /https?:\/\/heise\.de\/-[0-9]*/i
+      console.log "Heise link; ignoring"
     else
       httpResponse(url)
