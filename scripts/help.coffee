@@ -1,9 +1,12 @@
-# Description: 
+# Description:
 #   Generates help commands for Hubot.
 #
+# Configuration:
+#   HEROKU_URL
+#
 # Commands:
-#   hubot help - Displays all of the help commands that Hubot knows about.
-#   hubot help <query> - Displays all help commands that match <query>.
+#   hubot help - Displays all of the help commands that Hubot knows about in a private chat.
+#   hubot help <query> - Displays all help commands that match <query>. in a private chat.
 #
 # URLS:
 #   /hubot/help
@@ -52,6 +55,9 @@ helpContents = (name, commands) ->
 
 module.exports = (robot) ->
   robot.respond /help\s*(.*)?$/i, (msg) ->
+    msg.send "For help visit: #{process.env.HEROKU_URL}/#{robot.name}/help"
+
+    user = {user: {name: msg.message.user.name}}
     cmds = robot.helpCommands()
     filter = msg.match[1]
 
@@ -59,7 +65,7 @@ module.exports = (robot) ->
       cmds = cmds.filter (cmd) ->
         cmd.match new RegExp(filter, 'i')
       if cmds.length == 0
-        msg.send "No available commands match #{filter}"
+        robot.send user, "No available commands match #{filter}"
         return
 
     prefix = robot.alias or "#{robot.name} "
@@ -69,7 +75,7 @@ module.exports = (robot) ->
 
     emit = cmds.join "\n"
 
-    msg.send emit
+    robot.send user, emit
 
   robot.router.get "/#{robot.name}/help", (req, res) ->
     cmds = robot.helpCommands().map (cmd) ->
