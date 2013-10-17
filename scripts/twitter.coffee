@@ -10,6 +10,7 @@
 #   HUBOT_TWITTER_CONSUMER_SECRET
 #   HUBOT_TWITTER_ACCESS_TOKEN
 #   HUBOT_TWITTER_ACCESS_TOKEN_SECRET
+#   HUBOT_TWITTER_ALLOW_RETWEETS
 #   HUBOT_TWITTER_FILTER
 #
 # Commands:
@@ -19,6 +20,7 @@
 #   apfohl
 
 Twit = require "twit"
+util = require "util"
 config =
   consumer_key: process.env.HUBOT_TWITTER_CONSUMER_KEY
   consumer_secret: process.env.HUBOT_TWITTER_CONSUMER_SECRET
@@ -36,8 +38,9 @@ module.exports = (robot) ->
     stream = twit.stream("statuses/filter", track: process.env.HUBOT_TWITTER_FILTER)
 
     stream.on "tweet", (tweet) ->
-      for room in allRooms
-        robot.messageRoom room, "Twitter - #{tweet.user.screen_name}: #{tweet.text}"
+      if not tweet.retweeted_status? or process.env.HUBOT_TWITTER_ALLOW_RETWEETS
+        for room in allRooms
+          robot.messageRoom room, "Twitter - #{tweet.user.screen_name}: #{tweet.text}"
   
     stream.on "disconnect", (disconnectMessage) ->
       for room in allRooms
