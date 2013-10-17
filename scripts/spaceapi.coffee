@@ -16,31 +16,36 @@
 module.exports = (robot) ->
   robot.respond /status/i, (msg) ->
     msg.http(process.env.HUBOT_SPACEAPI_URL)
+      .header('Accept', 'application/json')
       .get() (err, res, body) ->
         if err
-          msg.send "Encountered an error :( #{err}"
+          msg.send "Encountered an error: #{err}."
           return
-        data = JSON.parse(body)
+
+        data = null
+        try
+          data = JSON.parse(body)
+        catch error
+          msg.send "No valid JSON!"
+          return
+
         status = data.space
-  
+
         if data.api == "0.13"
-  
           if data.state && data.state.open
             status += ' is open'
           else
             status += ' is closed'
-  
+
           if data.state && data.state.lastchange
             status += ' since ' + (new Date(data.state.lastchange * 1000))
-  
         else
-  
           if data.open
             status += ' is open'
           else
             status += ' is closed'
-  
+
           if data.lastchange
             status += ' since ' + (new Date(data.lastchange * 1000))
-  
+
         msg.send status
