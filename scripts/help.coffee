@@ -57,26 +57,6 @@ module.exports = (robot) ->
   robot.respond /help\s*(.*)?$/i, (msg) ->
     msg.send "For help visit: #{process.env.HEROKU_URL}/#{robot.name}/help"
 
-    user = {user: {name: msg.message.user.name}}
-    cmds = robot.helpCommands()
-    filter = msg.match[1]
-
-    if filter
-      cmds = cmds.filter (cmd) ->
-        cmd.match new RegExp(filter, 'i')
-      if cmds.length == 0
-        robot.send user, "No available commands match #{filter}"
-        return
-
-    prefix = robot.alias or "#{robot.name} "
-    cmds = cmds.map (cmd) ->
-      cmd = cmd.replace /^hubot /, prefix
-      cmd.replace /hubot/ig, robot.name
-
-    emit = cmds.join "\n"
-
-    robot.send user, emit
-
   robot.router.get "/#{robot.name}/help", (req, res) ->
     cmds = robot.helpCommands().map (cmd) ->
       cmd.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
