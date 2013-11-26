@@ -44,7 +44,7 @@ module.exports = (robot) ->
   
     stream.on "disconnect", (disconnectMessage) ->
       for room in allRooms
-        robot.messageRoom room, "I've got disconnected from Twitter stream. Apparently the reason is: #{disconnectMessage}"
+        robot.messageRoom room, "I've got disconnected from Twitter stream. Apparently the reason is: #{JSON.stringify(disconnectMessage)}"
   
     stream.on "reconnect", (request, response, connectInterval) ->
       for room in allRooms
