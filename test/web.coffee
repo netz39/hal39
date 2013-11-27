@@ -13,7 +13,7 @@ describe 'web.coffee', ->
 			r = new Robot
 			web = require('../scripts/web.coffee')
 			web(r)
-			testurls = ["HTTP://Bastinat0r.de", "http://example.com", "https://github.com/netz39/hal39/pull/20", "https://wiki.archlinux.org/index.php/Installation_Guide#Connect_to_the_internet"]
+			testurls = ["HTTP://Bastinat0r.de", "http://example.com", "https://github.com/netz39/hal39/pull/20", "https://wiki.archlinux.org/index.php/Installation_Guide#Connect_to_the_internet", '[travis-ci] Change view : https://github.com/netz39/hal39/compare/e099fd27efd7...01fe4a693949', '[travis-ci] Build details : http://travis-ci.org/netz39/hal39/builds/14613844']
 			for url in testurls
 				r.hears[0][0].test(url).should.be.true
 		
