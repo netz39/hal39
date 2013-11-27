@@ -11,17 +11,21 @@ describe 'hubot', ->
 			data.should.be.null
 			util.puts "stderr: " + data
 		hubot.stdout.on 'data', (data) ->
-			util.puts data
 			output = output + data
 		hubot.on 'close', (exitcode) ->
 			exitcode.should.be(0)
 
-		#timers.setTimeout( hubot.stdin.write, 2500, "foobar\n", 'utf-8')
+
+		test_input = () ->
+			hubot.stdin.write("foobar\n", 'utf-8')
+
+		timers.setTimeout( test_input, 2500 )
 
 
 		end = () ->
 			hubot.kill
 			output.should.not.be.empty
+			util.puts output
 			done()
 		timers.setTimeout( end , 9000)
 
