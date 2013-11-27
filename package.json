@@ -36,7 +36,7 @@
 		"coffee-script" : "*"
   },
 	"scripts": {
-		"test": "mocha --compilers coffee:coffee-script"
+		"test": "mocha --compilers coffee:coffee-script -R spec"
 	},
   "engines": {
     "node": ">= 0.8.x",
