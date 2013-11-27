@@ -2,8 +2,8 @@ util = require('util')
 timers = require('timers')
 
 describe 'hubot', ->
-	it 'should not crash for 9 seconds', (done) ->
-		this.timeout(10000)
+	it 'should not crash for 3 seconds', (done) ->
+		this.timeout(2900)
 		output = ""
 		child_process = require('child_process')
 		hubot = child_process.spawn('node_modules/.bin/hubot')
@@ -15,19 +15,12 @@ describe 'hubot', ->
 		hubot.on 'close', (exitcode) ->
 			exitcode.should.be(0)
 
-
-		test_input = () ->
-			hubot.stdin.write("foobar\n", 'utf-8')
-
-		timers.setTimeout( test_input, 2500 )
-
-
 		end = () ->
 			hubot.kill
 			output.should.not.be.empty
 			util.puts output
 			done()
-		timers.setTimeout( end , 9000)
+		timers.setTimeout( end , 2900)
 
 		
 
