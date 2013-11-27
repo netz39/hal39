@@ -4,7 +4,7 @@ should = require('should')
 
 describe 'hubot', ->
 	it 'should not crash for 3 seconds', (done) ->
-		this.timeout(2900)
+		this.timeout(3500)
 		output = ""
 		child_process = require('child_process')
 		hubot = child_process.spawn('node_modules/.bin/hubot')
