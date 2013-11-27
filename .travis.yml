@@ -1,7 +1,17 @@
 language: node_js
 node_js:
-  - "0.10"
-  - "0.8"
+- '0.10'
+- '0.8'
 notifications:
-  irc: "chat.freenode.net#n39-dev"
+  irc: chat.freenode.net#n39-dev
   email: false
+services:
+- redis
+env:
+  global:
+  - HUBOT_IRC_ROOMS="#netz39"
+  - secure: gEkHOmo4qDAkouyZMy/Yqr52NXsRs26YLTgWC4wmGU4YVGbH8Graxk2J9ZIbb0t4WNZMN89jyOK/me4DMInDqaYXHrsaIkKDT+BVe0nsX/OFjLwUeWU2kihD1ldadNqYtisMwbFqaDSchj+hSJwZTQSpU4CojyvihRN2TpLyDWQ=
+  - secure: ds0vPb90DJk8fVZrm5t6KsaigXKBEEJUv1w9uAKeRQR8qb1kqrLyHHOBmCWfrL9JMa+Z3RVoDMW//CA516CSAWs/2tw6hTguq71JXu29svV06LzhM0LPRfMOGgjFBwD8EVJXNaEiq3R6/3HqNAt+IiPi+4SG7xpYrKFkRSO6ySc=
+  - secure: PT2S+kk++ImV2fEnqDc2qJ5swMURhvAUFmtA7adiWlgoT5njS9M/a5d36nTE5blrvk4ZoNzManWO5biSqD91KnPyqBCRQ7ARL4WTuv2yJlVsowXR+VAEAaDVMeSQJTOZm9rNhG9qd75dug7JsXGY5l9EqQKaPoRiB5H3QtsC5yo=
+  - secure: Amw9xykSu8tWhWW6ZSI8CvgQWT847rq/HN5/kZTFksn42w2FZaXlnyW5KBP9qljO4b3fJQCmh2XHKyiFO78Xjb/eGhK3PCoKsWWbUTiFRtYHbKM9Xv/D40LobzZ1LiZN0FxhDS0y1/yM4N/0b6z/76DX+O/cM+v7JSHB4msoaL4=
+  - secure: DX6bRpwgVuZkhaWRvO2oqkNhXTliGTfTRwoXSW5mHX3Z0H8DBtCodFi4pK6q0gX+ARKtiqHeemZ/HyX2i0iXbvMrHnA5IwbOkrRY7GKrytZNsapadlAnGmw9XB4RUu2y8TU0Nocqo3Wp57KAFBoQD0ijh/MUajd01SDe0smLQ0c=
