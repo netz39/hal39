@@ -1,5 +1,6 @@
 util = require('util')
 timers = require('timers')
+should = require('should')
 
 describe 'hubot', ->
 	it 'should not crash for 3 seconds', (done) ->
