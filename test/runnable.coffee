@@ -2,9 +2,10 @@ util = require('util')
 timers = require('timers')
 should = require('should')
 
-describe 'hubot', ->
-	it 'should not crash for 3 seconds', (done) ->
-		this.timeout(3500)
+describe 'runnable', ->
+	this.timeout(15000)
+	it 'should not crash for 2 seconds', (done) ->
+		this.timeout(3000)
 		output = ""
 		child_process = require('child_process')
 		hubot = child_process.spawn('node_modules/.bin/hubot')
@@ -21,7 +22,5 @@ describe 'hubot', ->
 			output.should.not.be.empty
 			util.puts output
 			done()
-		timers.setTimeout( end , 2900)
-
-		
+		timers.setTimeout( end , 2000)
 
