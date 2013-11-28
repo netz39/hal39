@@ -15,3 +15,10 @@ env:
   - secure: PT2S+kk++ImV2fEnqDc2qJ5swMURhvAUFmtA7adiWlgoT5njS9M/a5d36nTE5blrvk4ZoNzManWO5biSqD91KnPyqBCRQ7ARL4WTuv2yJlVsowXR+VAEAaDVMeSQJTOZm9rNhG9qd75dug7JsXGY5l9EqQKaPoRiB5H3QtsC5yo=
   - secure: Amw9xykSu8tWhWW6ZSI8CvgQWT847rq/HN5/kZTFksn42w2FZaXlnyW5KBP9qljO4b3fJQCmh2XHKyiFO78Xjb/eGhK3PCoKsWWbUTiFRtYHbKM9Xv/D40LobzZ1LiZN0FxhDS0y1/yM4N/0b6z/76DX+O/cM+v7JSHB4msoaL4=
   - secure: DX6bRpwgVuZkhaWRvO2oqkNhXTliGTfTRwoXSW5mHX3Z0H8DBtCodFi4pK6q0gX+ARKtiqHeemZ/HyX2i0iXbvMrHnA5IwbOkrRY7GKrytZNsapadlAnGmw9XB4RUu2y8TU0Nocqo3Wp57KAFBoQD0ijh/MUajd01SDe0smLQ0c=
+deploy:
+  provider: heroku
+  api_key:
+    secure: W4dCa+me56GGT8LqhJ3n8MWX55r+aaya2O6QJOt0YWqtn9Yicdb1RnzuI6f+vIsD/jGJiOkNXsFcRZTpdyhvdtCC5ecUYfadVQP9WgK+sJhNG6/Rb7U9z5MyIetM/lFTx9RGI5QTH0v+uNL6uFr4/9KGD6V0HZT+3qUEaCkl8XU=
+  app: hal39
+  on:
+    repo: netz39/hal39
