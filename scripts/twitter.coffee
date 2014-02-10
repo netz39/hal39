@@ -12,6 +12,7 @@
 #   HUBOT_TWITTER_ACCESS_TOKEN_SECRET
 #   HUBOT_TWITTER_ALLOW_RETWEETS
 #   HUBOT_TWITTER_FILTER
+#   HUBOT_TWITTER_ROOMS
 #
 # Commands:
 #   None
@@ -27,7 +28,7 @@ config =
   access_token: process.env.HUBOT_TWITTER_ACCESS_TOKEN
   access_token_secret: process.env.HUBOT_TWITTER_ACCESS_TOKEN_SECRET
 
-allRooms = process.env.HUBOT_IRC_ROOMS.split(',')
+allRooms = process.env.HUBOT_TWITTER_ROOMS.split(',')
 
 module.exports = (robot) ->
   twit = undefined
