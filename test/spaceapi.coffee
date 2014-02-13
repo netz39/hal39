@@ -13,4 +13,4 @@ describe 'spaceapi.coffee', ->
 			r = new Robot
 			spaceapi = require('../scripts/spaceapi.coffee')
 			spaceapi(r)
-			(i[0].test('status') and i[0].test('STATUS') for i in r.responses).should.contain(true)
+			(i[0].test('status') and i[0].test('STATUS') for i in r.responses).should.containEql(true)

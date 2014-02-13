@@ -13,10 +13,10 @@ describe 'ical.coffee', ->
 			r = new Robot
 			ical = require('../scripts/ical.coffee')
 			ical(r)
-			(i[0].test('next') and i[0].test('NEXT') for i in r.responses).should.contain(true)
+			(i[0].test('next') and i[0].test('NEXT') for i in r.responses).should.containEql(true)
 
 		it 'should answer to upcoming', ->
 			r = new Robot
 			ical = require('../scripts/ical.coffee')
 			ical(r)
-			(i[0].test('upcoming') and i[0].test('UPCOMING') for i in r.responses).should.contain(true)
+			(i[0].test('upcoming') and i[0].test('UPCOMING') for i in r.responses).should.containEql(true)
